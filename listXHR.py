@@ -4,6 +4,7 @@ import Article
 import json
 import requests
 import time
+import io
 
 url = "http://m.news.naver.com/mainNews/moreMainNews.json"
 
@@ -45,8 +46,9 @@ def main(k):
                 article.Link = "http://m.news.naver.com" + data["message"]["itemList"][j]["linkUrl"]
                 article.SectionName = (data["message"]["itemList"][j]["sectionName"] if data["message"]["itemList"][j]["sectionName"] else None)
                 article.get_contents()
-                article.log()
-                print(" ")
-        print(i)
+                #article.log()
+                f = io.open("articles/" + article.ArticleID, 'w', encoding='utf8')
+                f.write(str(article.__dict__))
+                f.close()
+        time.sleep(10)
 
-main(1)
