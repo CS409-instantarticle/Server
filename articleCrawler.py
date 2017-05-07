@@ -1,10 +1,17 @@
 ﻿from bs4 import BeautifulSoup as BS
 import urllib.request
 
-def get_text(URL):
-    source_code_from_URL = urllib.request.urlopen(URL);
-    soup = BS(source_code_from_URL, 'html.parser', from_encoding = 'utf-8');
-    print(soup.find_all('div', id="dic_area"))
+def remove_tag(text, tag):
+    while text.find("<" + tag) != -1:
+        start_index = text.find("<" + tag)
+        end_index = start_index
+        while text[end_index] != '>':
+            end_index += 1
+        text = text[:start_index] + text[end_index+1:]
+    return text
 
-#print(get_text("http://m.news.naver.com/read.nhn?oid=079&aid=0002964148"))
-get_text("http://m.news.naver.com/read.nhn?oid=079&aid=0002964148")
+def get_text(URL):
+    source_code_from_URL = urllib.request.urlopen(URL)
+    soup = BS(source_code_from_URL, 'html.parser', from_encoding = 'utf-8')
+    result = soup.find_all('div', id="dic_area")[0]
+    return(remove_tag(remove_tag(str(result).replace("</br>","").replace("<br>","\n").replace("</tr>","").replace("</td>","").replace("<tr>","").replace("<td>","").replace("<strong>","").replace("</strong>","").replace("<b>","").replace("</b>","").replace("<center>","").replace("</center>",""),"font"),"/font"))

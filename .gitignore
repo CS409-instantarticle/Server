@@ -1,5 +1,5 @@
 # Ignore pycache folder
-_pycache_/
+__pycache__/
 # Ignore crawled data
 NewsList*/
 # Ignore temporal files

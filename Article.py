@@ -8,8 +8,6 @@ class NewsArticle:
         Video = False
         Link = None
         Text = None
-        # Image if Video == False Video else
-        MediaURL = None
 
         def log(self):
                 print("	Article ID : " + str(self.ArticleID))
@@ -19,7 +17,6 @@ class NewsArticle:
                 print("	Video? : " + str(self.Video))
                 print("	Article Link : " + str(self.Link))
                 print("	Text : " + str(self.Text))
-                print("	MediaURL : " + str(self.MediaURL))
 
         def get_contents(self):
                 self.Text = articleCrawler.get_text(self.Link)
