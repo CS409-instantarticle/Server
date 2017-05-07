@@ -31,14 +31,21 @@ print(data)
 '''
 
 def main(k):
-    for i in range(1, 420):
+    for i in range(k):
         data = {"page": str(i)}
         r = requests.post(url, headers=headers, data=data)
         data = json.loads(r.text)
         #with open("NewsList_0507" + "/" + str(i) + ".txt", "w") as f:
         #    f.write(r.text)
-        #print(data)
-        #print(i)
-        return data
+        for j in range(12):
+                # office, section?
+                print("	Article ID : " + data["message"]["itemList"][j]["articleId"])
+                print("	Article Title : " + data["message"]["itemList"][j]["title"])
+                print("	Article Date : " + data["message"]["itemList"][j]["standardFullDate"])
+                print("	Thumbnail Image URL : " + str(data["message"]["itemList"][j]["imageUrl"]))
+                print("	Video? : " + str(data["message"]["itemList"][j]["videoType"]))
+                print("	Link : http://m.news.naver.com" + data["message"]["itemList"][j]["linkUrl"])
+                print(" ")
+        print(i)
 
-
+main(10)

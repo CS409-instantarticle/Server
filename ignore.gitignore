@@ -1,2 +1,4 @@
 # Ignore pycache folder
 _pycache_/
+# Ignore crawled data
+NewsList*/
