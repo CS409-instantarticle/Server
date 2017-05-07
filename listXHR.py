@@ -5,6 +5,8 @@ import json
 import requests
 import time
 import io
+import urllib
+from PIL import Image
 
 url = "http://m.news.naver.com/mainNews/moreMainNews.json"
 
@@ -52,4 +54,4 @@ def main(k):
                 f.close()
         time.sleep(10)
 
-main(1000)
+main(10)
