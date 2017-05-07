@@ -1,6 +1,6 @@
+﻿# requests more naver news
 
-# requests more naver news
-
+import Article
 import json
 import requests
 import time
@@ -38,14 +38,16 @@ def main(k):
         #with open("NewsList_0507" + "/" + str(i) + ".txt", "w") as f:
         #    f.write(r.text)
         for j in range(12):
-                # office, section?
-                print("	Article ID : " + data["message"]["itemList"][j]["articleId"])
-                print("	Article Title : " + data["message"]["itemList"][j]["title"])
-                print("	Article Date : " + data["message"]["itemList"][j]["standardFullDate"])
-                print("	Thumbnail Image URL : " + str(data["message"]["itemList"][j]["imageUrl"]))
-                print("	Video? : " + str(data["message"]["itemList"][j]["videoType"]))
-                print("	Link : http://m.news.naver.com" + data["message"]["itemList"][j]["linkUrl"])
+                article = Article.NewsArticle()
+                article.ArticleID = data["message"]["itemList"][j]["articleId"]
+                article.ArticleTitle = data["message"]["itemList"][j]["title"]
+                article.ArticleDate = data["message"]["itemList"][j]["standardFullDate"]
+                article.ThumbnailImageURL = str(data["message"]["itemList"][j]["imageUrl"])
+                article.Video = data["message"]["itemList"][j]["videoType"]
+                article.Link = "http://m.news.naver.com" + data["message"]["itemList"][j]["linkUrl"]
+                article.get_contents()
+                article.log()
                 print(" ")
         print(i)
 
-main(10)
+main(1)
