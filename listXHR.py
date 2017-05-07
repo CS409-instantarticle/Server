@@ -52,3 +52,4 @@ def main(k):
                 f.close()
         time.sleep(10)
 
+main(1000)
