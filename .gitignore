@@ -2,3 +2,5 @@
 _pycache_/
 # Ignore crawled data
 NewsList*/
+# Ignore temporal files
+*.txt
