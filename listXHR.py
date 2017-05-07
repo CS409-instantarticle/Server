@@ -35,8 +35,6 @@ def main(k):
         data = {"page": str(i)}
         r = requests.post(url, headers=headers, data=data)
         data = json.loads(r.text)
-        #with open("NewsList_0507" + "/" + str(i) + ".txt", "w") as f:
-        #    f.write(r.text)
         for j in range(12):
                 article = Article.NewsArticle()
                 article.ArticleID = data["message"]["itemList"][j]["articleId"]
@@ -45,6 +43,7 @@ def main(k):
                 article.ThumbnailImageURL = str(data["message"]["itemList"][j]["imageUrl"])
                 article.Video = data["message"]["itemList"][j]["videoType"]
                 article.Link = "http://m.news.naver.com" + data["message"]["itemList"][j]["linkUrl"]
+                article.SectionName = (data["message"]["itemList"][j]["sectionName"] if data["message"]["itemList"][j]["sectionName"] else None)
                 article.get_contents()
                 article.log()
                 print(" ")
