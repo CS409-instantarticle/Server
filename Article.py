@@ -45,7 +45,8 @@ class NewsArticle:
                 splited_contents = split_by_img(texts)
 
                 #Remove blanks
-                splited_contents[0] = splited_contents[0].strip()
+                for i in range(len(splited_contents)):
+                        splited_contents[i] = splited_contents[i].lstrip()
                 if splited_contents[0] == '':
                         splited_contents.remove(splited_contents[0])
 
@@ -58,5 +59,6 @@ class NewsArticle:
                         else:
                                 # Text contents
                                 contents.append(Content(index, "text", conts).__dict__)
+                        # Image description not yet processed
                         index += 1
                 self.Contents = contents
