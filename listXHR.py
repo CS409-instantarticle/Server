@@ -18,21 +18,6 @@ headers = {
         'X-Requested-With': 'XMLHttpRequest'
 }
 
-data = {#"articleId": "0000026799",
-        #"officeId" : "353",
-        #"pageSize": "12",
-        "page" : 1,
-        #"itemId": "2580052"
-}
-
-'''
-# How to use
-
-r = requests.post(url, headers=headers, data=data)
-data = json.loads(r.text)
-print(data)
-'''
-
 def main(k):
     for i in range(k):
         data = {"page": str(i)}
