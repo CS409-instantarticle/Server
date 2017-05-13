@@ -6,7 +6,6 @@ import requests
 import time
 import io
 import urllib
-from PIL import Image
 
 url = "http://m.news.naver.com/mainNews/moreMainNews.json"
 
@@ -30,13 +29,14 @@ def main(k):
                 article.ArticleDate = data["message"]["itemList"][j]["standardFullDate"]
                 article.ThumbnailImageURL = str(data["message"]["itemList"][j]["imageUrl"])
                 article.Video = data["message"]["itemList"][j]["videoType"]
+                article.Press = data["message"]["itemList"][j]["officeName"]
                 article.Link = "http://m.news.naver.com" + data["message"]["itemList"][j]["linkUrl"]
                 article.SectionName = (data["message"]["itemList"][j]["sectionName"] if data["message"]["itemList"][j]["sectionName"] else None)
                 article.get_contents()
-                #article.log()
+                
                 f = io.open("articles/" + article.ArticleID, 'w', encoding='utf8')
                 f.write(str(article.__dict__))
                 f.close()
-        time.sleep(10)
+                print(str(i) + " " + str(j))
 
-main(10)
+main(1)

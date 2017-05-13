@@ -25,6 +25,7 @@ class NewsArticle:
         ArticleTitle = None
         SectionName = None
         ArticleDate = None
+        Press = None
         ThumbnailImageURL = None
         Video = False
         Link = None
