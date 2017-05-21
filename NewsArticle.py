@@ -28,10 +28,13 @@ class NewsArticle:
         texts = get_text(self.Link)
         self.Raw_contents = texts
         self.Contents = jsonify_content(texts)
-        
-    def write(self):
-	
+       
+    def getName(self):
         fileName = "%s%s" % (self.ArticleDate.replace(":", "").replace("-", "").replace(" ", ""), self.ArticleID)
+        return fileName
+
+    def write(self):
+        fileName = self.getName()
         directory = "articles/%s" % fileName
 
         try:
