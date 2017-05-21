@@ -25,10 +25,11 @@ def main(overwrite, maxrequest):
     print("Done")
 
 if __name__ == "__main__":
-    l = sys.argv
-    if len(l) == 2:
-        main(*sys.argv)
-    elif len(l) == 1:
-        main(eval(sys.argv[0]), 415)
+    l = sys.argv[1:]
+    print(l)
+    if len(l) == 3:
+        main(*l)
+    elif len(l) == 2:
+        main(l[0], 415)
     else:
         main(True, 415)
