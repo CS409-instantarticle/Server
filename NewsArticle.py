@@ -30,9 +30,16 @@ class NewsArticle:
         self.Contents = jsonify_content(texts)
         
     def write(self):
-        with open("articles/%s%s" % (self.ArticleDate.replace(":", "").replace("-", "").replace(" ", ""), self.ArticleID), "w") as f:
-            f.write(str(self))
-    
+	
+        directory = "articles/%s%s" % (self.ArticleDate.replace(":", "").replace("-", "").replace(" ", ""), self.ArticleID)
+        try:
+            f = open(directory, "r")
+        except IOError:
+            with open(directory, "w") as f:
+                f.write(str(self))
+            return
+        raise IOError    
+
     def __str__(self):
         d = dict()
         d["ArticleID"] = str(self.ArticleID)

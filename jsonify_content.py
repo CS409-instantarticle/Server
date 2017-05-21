@@ -33,8 +33,8 @@ def jsonify_content(content):
             bs = BS(i, 'html.parser')
 
             # 비디오 태그 : To Be Implemented
-            if "asdfjsadjfkadsljfkahfjladshfkjadshkf" in i:
-                continue
+            if "<video" in i:
+                json_list.append({'ArticleIndex': index, "ArticleType": "video", 'content': str(bs.find("<video"))})
             
             # 이미지 태그 : 대부분 span으로 묶여 있음. 사진과 태그 포함
             # 다만 다른 형식에 span이 사용될 수 있으므로 img를 이용함
