@@ -1,8 +1,10 @@
 # Ignore pycache folder
 __pycache__/
+.ipynb_checkpoints/
 # Ignore crawled data
 NewsList*/
 articles/
 # Ignore temporal files
 *.txt
 *.pyc
+
