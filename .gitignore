@@ -3,7 +3,7 @@ __pycache__/
 .ipynb_checkpoints/
 # Ignore crawled data
 NewsList*/
-articles/
+article*
 # Ignore temporal files
 *.txt
 *.pyc
